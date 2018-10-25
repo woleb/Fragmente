@@ -10,8 +10,9 @@ class MainActivity : AppCompatActivity() {
     //Fragment Manager
     val mManager = supportFragmentManager
     val mFragment = ErstesFragment()
+    val mFragment2 = ZweitesFragment()
 
-    val mTransaction = mManager.beginTransaction()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,11 +20,23 @@ class MainActivity : AppCompatActivity() {
 
         Log.i("TEST", "onCreate")
 
+        //Button für erstes Fragment
         val fragmentButton = findViewById<Button>(R.id.fragmentBtn)
         fragmentButton.setOnClickListener {
-
+            val mTransaction = mManager.beginTransaction()
             mTransaction.replace(R.id.fragmentPlatz, mFragment)
+            mTransaction.addToBackStack(null)
             mTransaction.commit()
+            //Log.i("TEST", "mFragment")
+        }
+        //Button für zweites Fragment
+        val fragmentButton2 = findViewById<Button>(R.id.fragment2Btn)
+        fragmentButton2.setOnClickListener {
+            val mTransaction = mManager.beginTransaction()
+            mTransaction.replace(R.id.fragmentPlatz, mFragment2)
+            mTransaction.addToBackStack(null)
+            mTransaction.commit()
+            //Log.i("TEST", "mFragment2")
         }
     }
 
