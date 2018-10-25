@@ -66,7 +66,12 @@ class ErstesFragment : Fragment() {
     }
 
     fun oeffneFragment () {
+        val daten : Bundle = Bundle()
+        daten.putString("name", fragmentTextFeld?.text.toString() )
+        daten.putString("testDaten", "ABCD")
+
         val zweitesFragment = ZweitesFragment()
+        zweitesFragment.arguments = daten
         this.fragmentManager?.beginTransaction()
             ?.replace(R.id.fragmentPlatz,zweitesFragment)
             ?.addToBackStack(null)

@@ -3,6 +3,7 @@ package com.example.it_wog.fragmente
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,15 +22,16 @@ private const val ARG_PARAM2 = "param2"
  */
 class ZweitesFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var mName: String? = null
+    private var mTest: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            mName = it.getString("name")
+            mTest = it.getString("testDaten")
         }
+        Log.i("TEST", "Die Daten sind $mName und $mTest")
     }
 
     override fun onCreateView(
