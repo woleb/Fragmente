@@ -3,9 +3,12 @@ package com.example.it_wog.fragmente
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,6 +26,7 @@ class ErstesFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    var fragmentTextFeld: EditText? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +40,31 @@ class ErstesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val mView = inflater?.inflate(R.layout.fragment_erstes, container, false)
+        fragmentTextFeld = mView?.findViewById<EditText>(R.id.editFragment1)
+
+        val button1 = mView?.findViewById<Button>(R.id.buttonFragment1)
+        button1?.setOnClickListener {
+            Log.i("TEST", "Textfeld: ${fragmentTextFeld?.text}")
+        }
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_erstes, container, false)
+        return mView
+    }
+
+    fun laenge (){
+        val text =fragmentTextFeld?.text.toString()
+        val textLength = text.length
+        Log.i("TEST", "Die Länge ist ${textLength}")
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        laenge()
     }
+
+
 
     companion object {
         /**
