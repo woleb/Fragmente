@@ -47,6 +47,7 @@ class ErstesFragment : Fragment() {
         val button1 = mView?.findViewById<Button>(R.id.buttonFragment1)
         button1?.setOnClickListener {
             Log.i("TEST", "Textfeld: ${fragmentTextFeld?.text}")
+            oeffneFragment()
         }
 
         // Inflate the layout for this fragment
@@ -64,6 +65,14 @@ class ErstesFragment : Fragment() {
         laenge()
     }
 
+    fun oeffneFragment () {
+        val zweitesFragment = ZweitesFragment()
+        this.fragmentManager?.beginTransaction()
+            ?.replace(R.id.fragmentPlatz,zweitesFragment)
+            ?.addToBackStack(null)
+            ?.commit()
+
+    }
 
 
     companion object {
